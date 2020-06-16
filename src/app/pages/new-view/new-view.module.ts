@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { NewViewPageRoutingModule } from './new-view-routing.module';
 
-import { NewViewPage } from './new-view.page';
+//import { NewViewPage } from './new-view.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { NewViewPage } from './new-view.page';
     IonicModule,
     NewViewPageRoutingModule
   ],
-  declarations: [NewViewPage]
+  //declarations: [NewViewPage]
 })
 export class NewViewPageModule {}

@@ -90,7 +90,14 @@ export class AppComponent {
         icon  : "construct-outline",
         queryParams : "",
         show  : this.isAuth 
-      },    
+      },   
+      {
+        title : "Home nature",
+        url   : "/home-nature-view",
+        icon  : "home",
+        queryParams : "",
+        show  : true 
+      },         
       {
         title : "Nouvel utilisateur",
         url   : "/auth",

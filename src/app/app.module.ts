@@ -17,7 +17,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppareilFormPage } from './pages/appareils/appareil-form/appareil-form.page';
 import { AuthService } from './services/auth.service';
 import { AuthPage } from './pages/auth/auth.page';
-
+import { NewViewPage } from './pages/new-view/new-view.page';
+import { NatureViewService } from './services/nature-view.service';
+import { AgmCoreModule } from '@agm/core'
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -27,21 +34,28 @@ import { AuthPage } from './pages/auth/auth.page';
     SettingsPage,
     OptionsPage,
     AppareilFormPage,
-    AuthPage
+    AuthPage,
+    NewViewPage
     ],
-  entryComponents: [AppareilsPage, SettingsPage,OptionsPage,AppareilFormPage,AuthPage],
+  entryComponents: [AppareilsPage, SettingsPage,OptionsPage,AppareilFormPage,AuthPage, NewViewPage],
   exports: [
     FormsModule,
     ReactiveFormsModule
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AgmCoreModule.forRoot({apiKey: 'AIzaSyCSHAjpvQTwly3jUSXYvhbBP_-1WDHdMb8'}), AppRoutingModule, HttpClientModule,FormsModule, ReactiveFormsModule,
+   IonicStorageModule.forRoot(),],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NavParams,
     AppareilsService,
-    AuthService
+    AuthService,
+    NatureViewService,
+    Geolocation,
+    Camera,
+    WebView,
+    File
   ],
   bootstrap: [AppComponent]
 })

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SetCoordinatesPageRoutingModule } from './set-coordinates-routing.module';
 
 import { SetCoordinatesPage } from './set-coordinates.page';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SetCoordinatesPageRoutingModule
+    SetCoordinatesPageRoutingModule,
+    AgmCoreModule
   ],
   declarations: [SetCoordinatesPage]
 })

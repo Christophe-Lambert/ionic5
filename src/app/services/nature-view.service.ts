@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NatureView } from '../models/NatureView.model';
 import { Subject } from 'rxjs';
+import { Storage } from '@ionic/storage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class NatureViewService {
   private natureViewList: NatureView[] = [];
   natureviewList$ = new Subject<NatureView[]>();
 
-  constructor() { }
+  constructor(private storage: Storage) {}
 
   
   emitList() {
@@ -19,6 +21,23 @@ export class NatureViewService {
 
   addNatureView(view: NatureView) {
     this.natureViewList.push(view);
+    this.saveList();
     this.emitList();
   }
+
+  saveList() {
+    this.storage.set('views', this.natureViewList);
+  }
+
+  fetchList() {
+    this.storage.get('views').then(
+      (list) => {
+        if (list && list.length) {
+          this.natureViewList = list.slice();
+        }
+        this.emitList();
+      }
+    );
+  }
+
 }

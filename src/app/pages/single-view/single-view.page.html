@@ -1,9 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>single-view</ion-title>
-  </ion-toolbar>
+  <ion-navbar>
+    <ion-title>{{ natureView.name }}</ion-title>
+  </ion-navbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-card>
+    <img [src]="natureView.imagePath">
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <p>{{ natureView.description }}</p>
+        </ion-item>
+        <ion-item>
+          <agm-map [latitude]="natureView.latitude" [longitude]="natureView.longitude">
+            <agm-marker [latitude]="natureView.latitude"
+                        [longitude]="natureView.longitude"
+                        [markerDraggable]="false"></agm-marker>
+          </agm-map>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

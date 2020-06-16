@@ -36,25 +36,25 @@ export class AppareilFormPage implements OnInit {
   }
 
   getDescriptionArray() {
-    return this.appareilForm.get('description') as FormArray;
-}
-
-onAddDescription() {
-  let newControl = this.formBuilder.control('');
-  this.getDescriptionArray().controls.push(newControl);
-}
-
-onRemoveDescription(index: number) {
-  this.getDescriptionArray().removeAt(index);
-}
-
-onSubmitForm() {
-  let newAppareil = new Appareil(this.appareilForm.get('name').value);
-  for (let control of this.getDescriptionArray().controls) {
-    newAppareil.description.push(control.value);
+      return this.appareilForm.get('description') as FormArray;
   }
-  this.appareilsService.addAppareil(newAppareil);
-  this.navCtrl.pop();
-}
+
+  onAddDescription() {
+    let newControl = this.formBuilder.control('');
+    this.getDescriptionArray().controls.push(newControl);
+  }
+
+  onRemoveDescription(index: number) {
+    this.getDescriptionArray().removeAt(index);
+  }
+
+  onSubmitForm() {
+    let newAppareil = new Appareil(this.appareilForm.get('name').value);
+    for (let control of this.getDescriptionArray().controls) {
+      newAppareil.description.push(control.value);
+    }
+    this.appareilsService.addAppareil(newAppareil);
+    this.navCtrl.pop();
+  }
 
 }
